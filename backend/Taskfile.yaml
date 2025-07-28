@@ -1,0 +1,50 @@
+version: '3'
+
+vars:
+  BINARY_NAME: app
+  DB_URL: postgres://dev:devpass@localhost:5432/mydb?sslmode=disable
+
+tasks:
+  dev:
+    desc: Run the Go backend
+    cmds:
+      - go run main.go
+
+  build:
+    desc: Build the Go backend binary
+    cmds:
+      - go build -o ../bin/{{.BINARY_NAME}}
+
+  test:
+    desc: Run backend tests
+    cmds:
+      - go test ./...
+
+  clean:
+    desc: Remove generated files
+    cmds:
+      - rm -rf ../bin/
+
+  sqlc:
+    desc: Run sqlc to generate Go code from SQL
+    cmds:
+      - sqlc generate -f db/sqlc.yaml
+
+  migrate:create:
+    desc: Create a new migration (use with MIGRATION_NAME="add_users_table")
+    requires:
+      vars: [MIGRATION_NAME]
+    cmds:
+      - migrate create -ext sql -dir db/migrations -seq {{.MIGRATION_NAME}}
+
+  migrate:up:
+    desc: Run database migrations
+    cmds:
+      - migrate -path db/migrations -database "{{.DB_URL}}" up
+
+  migrate:force:
+    desc: Force migrate the database to a specific version
+    requires:
+      vars: [VERSION]
+    cmds:
+      - migrate -path db/migrations -database "{{.DB_URL}}" force {{.VERSION}}

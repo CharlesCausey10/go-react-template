@@ -1,0 +1,105 @@
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+
+# ===== Environment Variables & Secrets =====
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env.test
+*.key
+*.pem
+*.crt
+config/secrets.yaml
+config/secrets.yml
+
+# ===== Go Backend =====
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Go build output
+backend/bin/
+backend/dist/
+backend/build/
+backend/tmp/
+
+# ===== React/Vite Frontend =====
+# Dependencies
+frontend/node_modules/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build output
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/out/
+
+# Vite specific
+frontend/.vite/
+frontend/dist-ssr/
+
+# ESLint cache
+frontend/.eslintcache
+
+# Parcel cache
+frontend/.cache/
+frontend/.parcel-cache/
+
+# Cypress
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+
+# Testing
+frontend/coverage/
+frontend/.nyc_output/
+
+# ===== IDEs & Editors =====
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== OS Generated Files =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===== Logs =====
+*.log
+logs/
+*.log.*
+
+# ===== Temporary Files =====
+*.tmp
+*.temp
+.tmp/
+.temp/

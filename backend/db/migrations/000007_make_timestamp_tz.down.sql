@@ -1,0 +1,3 @@
+ALTER TABLE password_reset_tokens
+ALTER COLUMN created_at TYPE TIMESTAMP,
+ALTER COLUMN expires_at TYPE TIMESTAMP;

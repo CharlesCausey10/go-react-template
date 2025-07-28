@@ -1,0 +1,2 @@
+ALTER TABLE users DROP CONSTRAINT unique_email;
+ALTER TABLE users DROP COLUMN email;

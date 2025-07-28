@@ -1,0 +1,18 @@
+version: "2"
+sql:
+  - schema: "schema.sql"
+    queries: "queries.sql"
+    engine: "postgresql"
+    gen:
+      go:
+        package: "db"
+        out: "../generated"
+        emit_json_tags: true
+        json_tags_case_style: "camel"
+        overrides:
+          - db_type: "timestamptz"
+            go_type:
+              import: "github.com/charlescausey10/go-react-template/backend/models"
+              package: "models"
+              type: "NullTime"
+
