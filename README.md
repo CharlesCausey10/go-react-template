@@ -38,7 +38,7 @@ The fastest way to get started is to fork this repository and follow these steps
 
 ```bash
 # Fork this repository on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/go-react-template.git
+git clone https://github.com/CharlesCausey10/go-react-template.git
 cd go-react-template
 ```
 
