@@ -11,8 +11,8 @@ export default function Logout() {
 
     return (
         <div className="max-w-md mx-auto p-6 mt-20">
-            <div className="bg-gray-800 border border-gray-700 rounded-lg p-8 text-center">
-                <h1 className="text-2xl font-bold text-white mb-4">You have been logged out</h1>
+            <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-lg text-center">
+                <h1 className="text-2xl font-bold text-gray-900 mb-4">You have been logged out</h1>
                 
                 <Link 
                     to="/"

@@ -7,12 +7,12 @@ type QueryResult<T> = {
     refetch: () => void;
 };
 
-type UseQueryOptions<T> = {
+type UseQueryOptions = {
     endpoint: string;
     baseUrl?: string; // defaults to http://localhost:8080/
 };
 
-export function useQuery<T>({ endpoint }: UseQueryOptions<T>): QueryResult<T> {
+export function useQuery<T>({ endpoint }: UseQueryOptions): QueryResult<T> {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
@@ -21,7 +21,10 @@ export function useQuery<T>({ endpoint }: UseQueryOptions<T>): QueryResult<T> {
         try {
             setLoading(true);
             const res = await fetch(endpoint);
-            if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
+            if (!res.ok) {
+                const errorText = await res.text().catch(() => "Failed to fetch");
+                throw new Error(errorText || `Failed to fetch: ${res.status}`);
+            }
             const json = await res.json();
             setData(json);
         } catch (err) {

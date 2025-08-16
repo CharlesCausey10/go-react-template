@@ -9,4 +9,5 @@ export interface Post {
 export interface PostInput {
     title: string;
     content: string;
+    userId: number;
 }

@@ -10,6 +10,7 @@ import (
 type createPostRequest struct {
 	Title   string `json:"title"`
 	Content string `json:"content"`
+	UserID  int32  `json:"userId"`
 }
 
 func (s *Server) HandleCreatePost(w http.ResponseWriter, r *http.Request) {
@@ -21,6 +22,7 @@ func (s *Server) HandleCreatePost(w http.ResponseWriter, r *http.Request) {
 	post, err := s.db.CreatePost(r.Context(), db.CreatePostParams{
 		Title:   req.Title,
 		Content: req.Content,
+		UserID:  req.UserID,
 	})
 	if err != nil {
 		http.Error(w, err.Error(), 500)

@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 
-	db "github.com/charlescausey10/go-react-template/backend/generated"
 	"github.com/charlescausey10/go-react-template/backend/handlers"
 	"github.com/charlescausey10/go-react-template/backend/mailer"
 	"github.com/charlescausey10/go-react-template/backend/routes"
@@ -15,10 +14,6 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
-
-// type Server struct {
-// 	db *db.Queries
-// }
 
 func main() {
 	env := os.Getenv("GO_ENV")
@@ -31,7 +26,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	server := handlers.NewServer(db.New(conn))
+	server := handlers.NewServer(conn)
 
 	r := chi.NewRouter()
 
